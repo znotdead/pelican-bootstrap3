@@ -117,7 +117,11 @@
                 {% if DISPLAY_CATEGORIES_ON_MENU %}
                     {% for cat, null in categories %}
                         <li {% if cat == category %}class="active"{% endif %}>
-                            <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat | capitalize }}</a>
+                        <a href="{{ SITEURL }}/{{ cat.url }}">
+                            {% if CATEGORIES_LOGO %}
+                                <img src='/static/img/ico/{{cat|lower}}.png' width='{{ SITELOGO_SIZE }}'>{{ cat | capitalize }}
+                            {% endif %}
+                        </a>
                         </li>
                     {% endfor %}
                 {% endif %}
