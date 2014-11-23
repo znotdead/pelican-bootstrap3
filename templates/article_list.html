@@ -5,7 +5,7 @@
             <h2>{{ category }}</h2>
             <table class='table table-condensed table-striped'>
                 <tbody>
-                    {% for line in articles|batch(2, fill_with='') %}
+                    {% for line in articles|sort(attribute='title')|batch(2, fill_with='') %}
                         <tr>
                         {% for article in line %}
                             <td>
