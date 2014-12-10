@@ -129,11 +129,16 @@
                       {% endfor %}
                 {% endif %}
                 {% if DISPLAY_CATEGORIES_ON_MENU %}
+                    {% set categories_len = categories|length %}
                     {% for cat, null in categories %}
                         <li {% if cat == category %}class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ cat.url }}">
                             {% if CATEGORIES_LOGO %}
-                                <img src='/static/img/ico/{{cat|lower}}.png' width='{{ SITELOGO_SIZE }}'>{{ cat | capitalize }}
+                                    {% if categories_len < 6 %}
+                                        <img src='/static/img/ico/{{cat|lower}}.png' width='{{ SITELOGO_SIZE }}'>{{ cat | capitalize }}
+                                    {% else %}
+                                        <img src='/static/img/ico/{{cat|lower}}.png' width='{{ SITELOGO_SIZE }}'>
+                                    {% endif %}
                             {% endif %}
                         </a>
                         </li>
